@@ -1,0 +1,43 @@
+<form [formGroup]="formGroup" style="margin: 20px;" (ngSubmit)="login()">
+    <mat-card class="" style="width: 30%;margin: 0 auto;">
+        <mat-card-header>
+            <mat-card-title>Login</mat-card-title>
+            <mat-card-subtitle>Login with your email address and password</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div style="margin-top: 20px;">
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="email" required>
+                    <mat-error *ngIf="formGroup.invalid">{{getErrorMessage().emailError}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="isPasswordHidden ? 'password' : 'text'" formControlName="password">
+                    <button mat-icon-button matSuffix (click)="isPasswordHidden = !isPasswordHidden"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="isPasswordHidden">
+                        <mat-icon>{{isPasswordHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="formGroup.invalid">{{getErrorMessage().passwordError}}</mat-error>
+                </mat-form-field>
+            </div>
+            <ng-container *ngIf="hasLoginFailed">
+                <div class="errorMessage">
+                    {{loginFailureMessage}}
+                </div>
+            </ng-container>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button type="submit" mat-fab extended class="add-sign-up-button" [disabled]="formGroup.invalid">
+                <mat-icon>login</mat-icon>
+                Login
+            </button>
+            <span style="margin-left: 10px; margin-right: 10px;">
+                or
+            </span>
+            <span><a routerLink="/signup">Sign Up</a></span>
+        </mat-card-actions>
+    </mat-card>
+</form>

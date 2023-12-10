@@ -1,0 +1,21 @@
+.title-text-background{
+  font-size: 100px;
+  background-color: #211886;
+  color: #eadf8c;
+}
+
+.title-text{
+  font-size: 90px;
+  color:#211886;
+  margin-left: 20px;
+  border-bottom: 10px solid #211886;
+  padding: 15px;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  align-items: center;
+  flex-wrap: wrap;
+}

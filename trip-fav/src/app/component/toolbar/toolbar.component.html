@@ -1,0 +1,29 @@
+<mat-toolbar>
+    <!-- <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+    </button> -->
+    <span style="background-color: #eadf8c; padding: 5px;">
+        <span><a routerLink="/home" class="toolbar-title">Trip Favs.</a></span>
+    </span>
+
+    <span class="spacer"></span>
+    <!-- <button mat-icon-button class="example-icon favorite-icon">
+        <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon">
+        <mat-icon>share</mat-icon>
+    </button> -->
+    <ng-container *ngIf="user!=null">
+        <button mat-fab extended color="basic" (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            Logout
+        </button>
+    </ng-container>
+    <ng-container *ngIf="user==null">
+        <a mat-fab extended color="basic" routerLink="/login">
+            <mat-icon>login</mat-icon>
+            Login
+        </a>
+        <span><a routerLink="/signup">Sign Up</a></span>
+    </ng-container>
+</mat-toolbar>

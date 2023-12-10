@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>
+    <ng-container [ngSwitch]="data.mode">
+        <span *ngSwitchCase="'CREATE'">Create a new trip?</span>
+        <span *ngSwitchCase="'SHARE'">Enter a shared TripID</span>
+    </ng-container>
+</h1>
+<div mat-dialog-content>
+    <ng-container [ngSwitch]="data.mode">
+        <div *ngSwitchCase="'CREATE'">
+            <mat-form-field style="width: 300px;">
+                <mat-label>Trip Name</mat-label>
+                <input matInput #inputTripName [value]="">
+            </mat-form-field>
+        </div>
+        <div *ngSwitchCase="'SHARE'">
+            <mat-form-field style="width: 300px;">
+                <mat-label>Trip Id</mat-label>
+                <input matInput #inputTripId [value]="">
+            </mat-form-field>
+        </div>
+    </ng-container>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="onConfirm()" cdkFocusInitial [disabled]="isDisabledConfirm">Confirm</button>
+</div>
