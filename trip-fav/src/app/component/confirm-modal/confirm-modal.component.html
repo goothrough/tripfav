@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>
+    <ng-container [ngSwitch]="data.mode">
+        <span *ngSwitchCase="'REGISTER'">Add the location you selected to the list?</span>
+        <span *ngSwitchCase="'UPDATE'">Edit and Update the location.</span>
+        <span *ngSwitchCase="'DELETE'">Are you sure to delete this location?</span>
+    </ng-container>
+</h1>
+<div mat-dialog-content>
+    <div>
+        <mat-form-field style="width: 300px;">
+            <mat-label>Location Name</mat-label>
+            <input matInput #inputLocationName [value]="data.location.locationName" [disabled]="isLocationNameInputDisabled">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field style="width: 500px;">
+            <mat-label>Address</mat-label>
+            <input matInput #inputAddress [value]="data.location.address" disabled>
+        </mat-form-field>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="onConfirm()" cdkFocusInitial>Confirm</button>
+</div>
